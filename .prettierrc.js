@@ -6,6 +6,6 @@ module.exports = {
   tabWidth: 2,
   semi: true,
   doubleQuote: true,
-  printWidth: 80,
+  printWidth: 100,
   bracketSpacing: true,
 };

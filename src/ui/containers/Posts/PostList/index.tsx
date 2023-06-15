@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-import type { IPost } from "@entities/Post";
+import type { Post } from "@model/Post";
 
 export interface PostListProps {
   isLoading: boolean;
-  posts: IPost[];
+  posts?: Post[];
 }
 
 const PostList = ({ isLoading, posts }: PostListProps) => {

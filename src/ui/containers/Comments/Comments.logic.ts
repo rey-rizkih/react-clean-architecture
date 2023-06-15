@@ -1,8 +1,10 @@
-import Di from "@di/index";
+import Di from "adapter/di/index";
 import { useCallback, useState } from "react";
 
 import type { ICommentParams } from "@entities/Comment";
 import type { SubmitHandler } from "react-hook-form";
+
+const commentUseCase = new Di().comment;
 
 export const useComment = (postId: number) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -12,7 +14,7 @@ export const useComment = (postId: number) => {
       setIsLoading(true);
 
       try {
-        const comment = await new Di().comment.addComment(postId, values);
+        const comment = await commentUseCase.addComment(postId, values);
 
         console.log(comment);
       } catch (error) {

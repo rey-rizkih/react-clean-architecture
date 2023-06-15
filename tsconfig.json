@@ -18,19 +18,22 @@
     "baseUrl": "./src",
     "paths": {
       "@/*": ["./src"],
-      "@common/*": ["./adapter/common/*"],
-      "@infrastructures/*": ["./adapter/infrastructures/*"],
-      "@repositories/*": ["./adapter/repositories/*"],
-      "@di": ["./di"],
-      "@di/*": ["./di/*"],
-      "@dtos/*": ["./domain/dtos/*"],
-      "@entities/*": ["./domain/entities/*"],
-      "@usecases/*": ["./domain/usecases/*"],
-      "@routes/*": ["./main/routes/*"],
-      "@utils/*": ["./main/utils/*"],
+      "@di": ["./adapter/di"],
+      "@di/*": ["./adapter/di/*"],
+      "@repository/*": ["./adapter/repositories/*"],
+      "@service/*": ["./adapter/services/*"],
+      "@useCase/*": ["./adapter/useCases/*"],
+      "@dto/*": ["./domain/dtos/*"],
+      "@error/*": ["./domain/errors/*"],
+      "@mapper/*": ["./domain/mappers/*"],
+      "@model/*": ["./domain/models/*"],
+      "@hook/*": ["./main/hooks/*"],
+      "@infra/*": ["./main/infrastructures/*"],
+      "@route/*": ["./main/routes/*"],
+      "@util/*": ["./main/utils/*"],
       "@ui/*": ["./ui/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "domain/repository", "domain/mapper", "domain/errors"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
