@@ -7,16 +7,39 @@ class LocalStorage implements Storage {
     this.storage = storage;
   }
 
-  async get(name: string): Promise<string> {
-    return await this.storage.getItem(name);
+  get(name: string): string | null {
+    return this.storage.getItem(name);
   }
 
-  async set(name: string, value: string): Promise<void> {
-    await this.storage.setItem(name, value);
+  getObject<T>(name: string): T | null {
+    const value = this.get(name);
+
+    if (value) return JSON.parse(value);
+
+    return null;
   }
 
-  async remove(name: string): Promise<void> {
-    await this.storage.removeItem(name);
+  set(name: string, value: string | number | object): void {
+    let payload;
+
+    switch (typeof value) {
+      case "string":
+        payload = value;
+        break;
+      case "number":
+        payload = String(value);
+        break;
+
+      default:
+        payload = JSON.stringify(value);
+        break;
+    }
+
+    this.storage.setItem(name, payload);
+  }
+
+  remove(name: string): void {
+    this.storage.removeItem(name);
   }
 }
 
